@@ -22,7 +22,7 @@
     
             <input type="email" name="email" class="email" />
     
-            <input type="password" name="password" class="email" />
+            <input type="password" name="password" class="password" />
     
             <div class="btn-container">
                 <button type="submit"> Login</button>
