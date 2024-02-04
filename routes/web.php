@@ -19,6 +19,8 @@ Route::post('/',[AuthController::class, 'handleLogin'])->name('handleLogin');
         Route::post('/create', [DepartementController::class, 'store'])->name('departement.store');
         Route::get('/edit/{departement}', [DepartementController::class, 'edit'])->name('departement.edit');
         Route::put('/update/{departement}', [DepartementController::class, 'update'])->name('departement.update');
+        Route::get('/delete/{departement}', [DepartementController::class, 'delete'])->name('departement.delete');
+
     });
 
     Route::prefix('employers')->group(function () {

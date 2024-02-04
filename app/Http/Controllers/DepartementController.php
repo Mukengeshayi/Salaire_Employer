@@ -47,4 +47,15 @@ class DepartementController extends Controller
             dd($e);
         }
     }
+    public function delete(Departement $departement){
+        // dd($request);
+        //Enregistrer le departement
+        try {
+            $departement->delete();
+            return redirect()->route('departement.index')->with('success_message', 'Departement supprimé');
+
+        } catch (Exception $e) {
+            dd($e);
+        }
+    }
 }
