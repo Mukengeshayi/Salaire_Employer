@@ -18,7 +18,7 @@ class DepartementController extends Controller
     }
 
     public function edit( Departement $departement){
-        return view('departements.edit', compact('departements'));
+        return view('departements.edit', compact('departement'));
     }
 
     # Interaction avec la DB
@@ -30,6 +30,18 @@ class DepartementController extends Controller
             $departement->name = $request->name;
             $departement->save();
             return redirect()->route('departement.index')->with('success_message', 'Departement enregistré');
+
+        } catch (Exception $e) {
+            dd($e);
+        }
+    }
+    public function update(Departement $departement, SaveDepartementRequest $request){
+        // dd($request);
+        //Enregistrer le departement
+        try {
+            $departement->name = $request->name;
+            $departement->update();
+            return redirect()->route('departement.index')->with('success_message', 'Departement modifier');
 
         } catch (Exception $e) {
             dd($e);

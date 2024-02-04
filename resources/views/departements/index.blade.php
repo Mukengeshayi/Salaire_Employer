@@ -58,8 +58,10 @@
                                             <tr>
                                                 <td class="cell">{{$departement->id}} </td>
                                                 <td class="cell"><span class="truncate"></span>{{$departement->name}} </td>
-                                                <td class="cell"><span class="truncate"></span>Action</td>
-
+                                                <td class="cell"><span class="truncate"></span>
+                                                    <a class="btn-sn app-btn-secondary" href="{{route('departement.edit',$departement->id)}}">Editer</a>
+                                                    <a class="btn-sn app-btn-secondary" href="">Supprimer</a>
+                                                </td>
                                             </tr>
 
                                         @empty
