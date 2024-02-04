@@ -58,14 +58,16 @@
                                             <tr>
                                                 <td class="cell">{{$departement->id}} </td>
                                                 <td class="cell"><span class="truncate"></span>{{$departement->name}} </td>
-                                            </tr>  
-                                            
+                                                <td class="cell"><span class="truncate"></span>Action</td>
+
+                                            </tr>
+
                                         @empty
                                             <tr>
                                                 <td class="cell" colspan="2">Aucun departement Ajouté</td>
-                                            </tr>      
+                                            </tr>
                                         @endforelse
-                                    
+
                                     </tbody>
                                 </table>
                             </div><!--//table-responsive-->
@@ -73,17 +75,7 @@
                         </div><!--//app-card-body-->
                     </div><!--//app-card-->
                     <nav class="app-pagination">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
+                        {{ $departements->links() }}
                     </nav><!--//app-pagination-->
 
                 </div><!--//tab-pane-->

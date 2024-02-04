@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class DepartementController extends Controller
 {
     public function index(){
-        $departements = Departement::paginate(1);
+        $departements = Departement::paginate(4);
         return view('departements.index', compact('departements'));
     }
 
@@ -24,6 +24,7 @@ class DepartementController extends Controller
     # Interaction avec la DB
 
     public function store(Departement $departement, SaveDepartementRequest $request){
+        // dd($request);
         //Enregistrer le departement
         try {
             $departement->name = $request->name;
@@ -31,7 +32,7 @@ class DepartementController extends Controller
             return redirect()->route('departement.index')->with('success_message', 'Departement enregistré');
 
         } catch (Exception $e) {
-            dd($e);   
+            dd($e);
         }
     }
 }

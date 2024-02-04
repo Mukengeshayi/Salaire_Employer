@@ -14,14 +14,14 @@
                     <div class="app-card app-card-settings shadow-sm p-4">
 
                         <div class="app-card-body">
-                            <form class="settings-form" method="POST">
+                            <form class="settings-form" method="POST" action="{{route('departement.store')}}">
                                 @csrf
                                 @method('POST')
                                 <div class="mb-3">
                                     <label for="setting-input-0" class="form-label">Departement</label>
                                     <select name="departement_id" id="departement_id" class="form-control">
                                         <option value=""></option>
-                                    </select>                               
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="setting-input-1" class="form-label">Nom<span class="ms-2"

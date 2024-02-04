@@ -32,7 +32,7 @@
                                             </svg></span></label>
                                     <input type="text" class="form-control" id="setting-input-1" name="name" placeholder="Entrer le nom du departement"required>
                                     @error('name')
-                                        {{$message}}
+                                        <div class="text-danger"> {{$message}}</div>
                                     @enderror
                                 </div>
                                 <button type="submit" class="btn app-btn-primary">ENREGISTER</button>
