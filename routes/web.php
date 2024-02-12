@@ -27,5 +27,7 @@ Route::post('/',[AuthController::class, 'handleLogin'])->name('handleLogin');
         Route::get('/', [EmployerController::class, 'index'])->name('employer.index');
         Route::get('/create', [EmployerController::class, 'create'])->name('employer.create');
         Route::get('/edit/{employer}', [EmployerController::class, 'edit'])->name('employer.edit');
+        Route::post('/create', [EmployerController::class, 'store'])->name('employer.store');
+
     });
 // });
