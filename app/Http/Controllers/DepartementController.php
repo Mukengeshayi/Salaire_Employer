@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveDepartementRequest;
 use App\Models\Departement;
+use Exception;
 use Illuminate\Http\Request;
 
 class DepartementController extends Controller
@@ -21,11 +22,7 @@ class DepartementController extends Controller
         return view('departements.edit', compact('departement'));
     }
 
-    # Interaction avec la DB
-
     public function store(Departement $departement, SaveDepartementRequest $request){
-        // dd($request);
-        //Enregistrer le departement
         try {
             $departement->name = $request->name;
             $departement->save();
@@ -35,9 +32,8 @@ class DepartementController extends Controller
             dd($e);
         }
     }
+    
     public function update(Departement $departement, SaveDepartementRequest $request){
-        // dd($request);
-        //Enregistrer le departement
         try {
             $departement->name = $request->name;
             $departement->update();
@@ -47,9 +43,8 @@ class DepartementController extends Controller
             dd($e);
         }
     }
+
     public function delete(Departement $departement){
-        // dd($request);
-        //Enregistrer le departement
         try {
             $departement->delete();
             return redirect()->route('departement.index')->with('success_message', 'Departement supprimé');

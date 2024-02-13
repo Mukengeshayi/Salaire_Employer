@@ -50,6 +50,9 @@
                 </div><!--//col-auto-->
             </div><!--//row-->
 
+            @if (Session::get('success_message'))
+                <div class="alert alert-success ">{{Session::get('success_message')}}</div>
+            @endif
             <div class="tab-content" id="orders-table-tab-content">
                 <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
                     <div class="app-card app-card-orders-table shadow-sm mb-5">
@@ -58,26 +61,32 @@
                                 <table class="table app-table-hover mb-0 text-left">
                                     <thead>
                                         <tr>
-                                            <th class="cell">#</th>
+                                            {{-- <th class="cell">#</th> --}}
                                             <th class="cell">Departements</th>
                                             <th class="cell">Nom</th>
                                             <th class="cell">Prenom</th>
                                             <th class="cell">Email</th>
                                             <th class="cell">Contact</th>
                                             <th class="cell">Salaire</th>
+                                            <th class="cell">Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($employers as $employer)
                                             <tr>
-                                                <td class="cell">{{$employer->id}}</td>
+                                                {{-- <td class="cell">{{$employer->id}}</td> --}}
                                                 <td class="cell"><span class="truncate">{{$employer->departement->name}}</span></td>
                                                 <td class="cell"><span class="truncate">{{$employer->nom}}</span></td>
                                                 <td class="cell">{{$employer->prenom}}</td>
                                                 <td class="cell">{{$employer->email}}</td>
-                                                <td class="cell"><span class="badge bg-success">{{$employer->contact}}</span></td>
+                                                <td class="cell">{{$employer->contact}}</td>
                                                 <td class="cell"><span class="badge bg-success">{{$employer->montant_journalier * 31}}</span></td>
+                                                <td class="cell"><span class="truncate"></span>
+                                                    <a class="btn-sn btn app-btn-primary" href="{{route('employer.edit',$employer->id)}}">Editer</a>
+                                                    <a class="btn-sn btn btn app-btn-primary" href="{{route('employer.delete',$employer->id)}}">Supprimer</a>
                                                 </td>
+
                                             </tr>
                                         @empty
                                             <tr>

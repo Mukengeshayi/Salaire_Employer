@@ -26,8 +26,9 @@ Route::post('/',[AuthController::class, 'handleLogin'])->name('handleLogin');
     Route::prefix('employers')->group(function () {
         Route::get('/', [EmployerController::class, 'index'])->name('employer.index');
         Route::get('/create', [EmployerController::class, 'create'])->name('employer.create');
-        Route::get('/edit/{employer}', [EmployerController::class, 'edit'])->name('employer.edit');
         Route::post('/create', [EmployerController::class, 'store'])->name('employer.store');
-
+        Route::get('/edit/{employer}', [EmployerController::class, 'edit'])->name('employer.edit');
+        Route::put('/update/{employer}', [EmployerController::class, 'update'])->name('employer.update');
+        Route::get('/delete/{employer}', [EmployerController::class, 'delete'])->name('employer.delete');
     });
 // });
