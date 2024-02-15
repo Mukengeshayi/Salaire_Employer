@@ -48,19 +48,17 @@
                                 <table class="table app-table-hover mb-0 text-left">
                                     <thead>
                                         <tr>
-                                            <th class="cell">#</th>
                                             <th class="cell">Nom</th>
-                                            <th class="cell"></th>
+                                            <th class="cell">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($departements as $departement)
                                             <tr>
-                                                <td class="cell">{{$departement->id}} </td>
                                                 <td class="cell"><span class="truncate"></span>{{$departement->name}} </td>
                                                 <td class="cell"><span class="truncate"></span>
-                                                    <a class="btn-sn app-btn-secondary" href="{{route('departement.edit',$departement->id)}}">Editer</a>
-                                                    <a class="btn-sn app-btn-secondary" href="{{route('departement.delete',$departement->id)}}">Supprimer</a>
+                                                    <a class="btn-sn btn app-btn-secondary" href="{{route('departement.edit',$departement->id)}}">Editer</a>
+                                                    <a class="btn-sn btn app-btn-secondary" href="{{route('departement.delete',$departement->id)}}">Supprimer</a>
                                                 </td>
                                             </tr>
 
