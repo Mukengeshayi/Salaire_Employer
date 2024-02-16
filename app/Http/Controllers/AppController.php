@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Departement;
 use App\Models\Employer;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Configuration;
 
 class AppController extends Controller
 {
@@ -12,6 +12,10 @@ class AppController extends Controller
         $totalDepartements = Departement::all()->count();
         $totalEmployers = Employer::all()->count();
         $totalAdministrateurs= User::all()->count();
+
+        $defaultPaymentDate = Configuration::where('type','PAYMENT_DATE')->first();
+        dd($defaultPaymentDate);
+        
         return view('dashboard', compact('totalDepartements','totalEmployers','totalAdministrateurs'));
     }
 }

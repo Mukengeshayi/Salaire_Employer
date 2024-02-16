@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\DepartementController;
 use Illuminate\Support\Facades\Route;
@@ -30,5 +31,14 @@ Route::post('/',[AuthController::class, 'handleLogin'])->name('handleLogin');
         Route::get('/edit/{employer}', [EmployerController::class, 'edit'])->name('employer.edit');
         Route::put('/update/{employer}', [EmployerController::class, 'update'])->name('employer.update');
         Route::get('/delete/{employer}', [EmployerController::class, 'delete'])->name('employer.delete');
+    });
+
+    Route::prefix('configuration')->group(function () {
+        Route::get('/', [ConfigurationController::class, 'index'])->name('configuration.index');
+        Route::get('/create', [ConfigurationController::class, 'create'])->name('configuration.create');
+        Route::post('/create', [ConfigurationController::class, 'store'])->name('configuration.store');
+        // Route::get('/edit/{employer}', [EmployerController::class, 'edit'])->name('employer.edit');
+        // Route::put('/update/{employer}', [EmployerController::class, 'update'])->name('employer.update');
+        Route::get('/delete/{configuration}', [ConfigurationController::class, 'destroy'])->name('configuration.delete');
     });
 // });

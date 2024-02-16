@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveDepartementRequest extends FormRequest
+class StoreConfigRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,16 @@ class SaveDepartementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:departements,name'
+            'type'=>'required|unique:configurations,type',
+            'value'=>'required',
         ];
     }
     public function messages(){
         return[
-            'name.required' => 'Le nom de departement est requis',
-            'name.unique' => 'Le nom de departement existe deja',
+            'type.required' => 'Le type de configuration est requise',
+            'type.unique' => 'Cette configuration existe dejà',
+            'value.required' => 'La valeur est requise',
+
         ];
     }
 }
