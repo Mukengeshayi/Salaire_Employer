@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveDepartementRequest;
 use App\Models\Departement;
 use Exception;
-use Illuminate\Http\Request;
 
 class DepartementController extends Controller
 {
@@ -32,7 +31,7 @@ class DepartementController extends Controller
             dd($e);
         }
     }
-    
+
     public function update(Departement $departement, SaveDepartementRequest $request){
         try {
             $departement->name = $request->name;
