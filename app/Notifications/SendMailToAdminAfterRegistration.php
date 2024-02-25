@@ -20,7 +20,6 @@ class SendMailToAdminAfterRegistration extends Notification
     {
         $this->code = $sendTocode;
         $this->email = $sendToemail;
-
     }
 
     /**

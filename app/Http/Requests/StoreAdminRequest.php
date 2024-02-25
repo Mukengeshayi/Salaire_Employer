@@ -30,10 +30,10 @@ class StoreAdminRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'=>'le nom de l\'adminstrateur requis',
-            'email.required'=>'le mail est requis',
-            'email.unique'=>'le mail est deja pris',
-            'email.email'=>'le mail est invalide',
+            'name.required'=>'Le nom de l\'adminstrateur requis',
+            'email.required'=>'Le mail est requis',
+            'email.unique'=>'Le mail est deja attaché à un compte',
+            'email.email'=>'Le mail est invalide',
             // 'password.required'=>'le mot de passe est requis',
         ];
     }

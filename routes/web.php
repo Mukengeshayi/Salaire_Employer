@@ -45,6 +45,9 @@ Route::post('/',[AuthController::class, 'handleLogin'])->name('handleLogin');
         Route::get('/', [AdminController::class, 'index'])->name('administrateur.index');
         Route::get('/create', [AdminController::class, 'create'])->name('administrateur.create');
         Route::post('/create', [AdminController::class, 'store'])->name('administrateur.store');
+        Route::get('/edit/{admin}', [AdminController::class, 'edit'])->name('administrateur.edit');
+        Route::put('/update/{admin}', [AdminController::class, 'update'])->name('administrateur.update');
+        Route::get('/delete/{admin}', [AdminController::class, 'delete'])->name('administrateur.delete');
 
     });
 // });
