@@ -14,9 +14,13 @@ class SendMailToAdminAfterRegistration extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public $code;
+    public $email;
+    public function __construct($sendTocode, $sendToemail)
     {
-        //
+        $this->code = $sendTocode;
+        $this->email = $sendToemail;
+
     }
 
     /**
@@ -30,14 +34,18 @@ class SendMailToAdminAfterRegistration extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
+     * Get the mail representation of the notification.s
      */
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Creation du compte Administrateur')
+                    ->line('Hello ')
+                    ->line('Votre compte été crée avec succes ')
+                    ->line('Saisissez le code'.$this->code.'renseignez le dans le formulaire qui apparaitra' )
+                    ->line('cliquer ci-sessous pour confirmer votre compte ')
+                    ->action('Cliquer', url('/validate-account'.'/'.$this->email))
+                    ->line('Merci!');
     }
 
     /**

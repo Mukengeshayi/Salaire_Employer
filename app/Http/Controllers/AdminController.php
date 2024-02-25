@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use App\Models\ResetCodePassword;
 use App\Models\User;
+use App\Notifications\SendMailToAdminAfterRegistration;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+// use Illuminate\Support\Facades\Notification as FacadesNotification;
 use PhpParser\Node\Stmt\TryCatch;
 
 class AdminController extends Controller
@@ -33,12 +38,25 @@ class AdminController extends Controller
     public function store(StoreAdminRequest $request)
     {
         $user= new User();
-
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make('default');
-
         $user->save();
+
+        if ($user) {
+             ResetCodePassword::where('email', $user->email)->delete();
+             $code = rand(1000,4000);
+
+             $data=[
+                'code'=>$code,
+                'email'=>$user->email,
+             ];
+             ResetCodePassword::create($data);
+             //Generer une  notification
+            Notification::route('email',$user->email)->notify(new SendMailToAdminAfterRegistration($code,$user->email));
+        }
+
+
     }
 
     /**

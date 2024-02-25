@@ -24,7 +24,7 @@ class StoreAdminRequest extends FormRequest
         return [
             'name'=>'required|',
             'email'=>'required|email|unique:users,email',
-            'password'=>'required',
+            // 'password'=>'required',
         ];
     }
     public function messages()
@@ -34,8 +34,7 @@ class StoreAdminRequest extends FormRequest
             'email.required'=>'le mail est requis',
             'email.unique'=>'le mail est deja pris',
             'email.email'=>'le mail est invalide',
-            'password.required'=>'le mot de passe est requis',
-
+            // 'password.required'=>'le mot de passe est requis',
         ];
     }
 }
