@@ -21,7 +21,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins=User::paginate(10);
+        $admins=User::paginate(6);
         return view('admin.index', compact('admins'));
     }
 
@@ -54,7 +54,10 @@ class AdminController extends Controller
              ];
              ResetCodePassword::create($data);
              //Generer une  notification
-             Notification::route('email',$user->email)->notify(new SendMailToAdminAfterRegistration($code,$user->email));
+             Notification::route('email',$user->email)->notify(new SendMailToAdminAfterRegistration($code, $user->email));
+
+             return redirect()->route('administrateur.index')->with('success_message', "Administrateur enregistré");
+
         }
     }
 
