@@ -21,4 +21,8 @@ class Employer extends Model
     {
         return $this->belongsTo(Departement::class);
     }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

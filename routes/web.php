@@ -52,5 +52,6 @@ Route::post('/',[AuthController::class, 'handleLogin'])->name('handleLogin');
     });
     Route::prefix('payment')->group(function () {
         Route::get('/', [PaymentController::class, 'index'])->name('payments');
+        Route::get('/make', [PaymentController::class, 'initPayment'])->name('payment.init');
     });
 // });
