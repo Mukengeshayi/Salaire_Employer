@@ -49,6 +49,7 @@
                                     <thead>
                                         <tr>
                                             <th class="cell">Nom</th>
+                                            <th class="cell">Email</th>
                                             <th class="cell">Actions</th>
                                         </tr>
                                     </thead>
@@ -56,8 +57,8 @@
                                         @forelse ($admins as $admin)
                                             <tr>
                                                 <td class="cell"><span class="truncate"></span>{{$admin->name}} </td>
+                                                <td class="cell"><span class="truncate"></span>{{$admin->email}} </td>
                                                 <td class="cell"><span class="truncate"></span>
-                                                    <a class="btn-sn btn app-btn-secondary" href="{{route('administrateur.edit',$admin->id)}}">Editer</a>
                                                     <a class="btn-sn btn app-btn-secondary" href="{{route('administrateur.delete',$admin->id)}}">Supprimer</a>
                                                 </td>
                                             </tr>

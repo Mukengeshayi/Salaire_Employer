@@ -6,6 +6,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[AuthController::class, 'login'])->name('login');
@@ -47,7 +48,9 @@ Route::post('/',[AuthController::class, 'handleLogin'])->name('handleLogin');
         Route::post('/create', [AdminController::class, 'store'])->name('administrateur.store');
         Route::get('/edit/{admin}', [AdminController::class, 'edit'])->name('administrateur.edit');
         Route::put('/update/{admin}', [AdminController::class, 'update'])->name('administrateur.update');
-        Route::get('/delete/{admin}', [AdminController::class, 'delete'])->name('administrateur.delete');
-
+        Route::get('/delete/{admin}', [AdminController::class, 'destroy'])->name('administrateur.delete');
+    });
+    Route::prefix('payment')->group(function () {
+        Route::get('/', [PaymentController::class, 'index'])->name('payments');
     });
 // });
